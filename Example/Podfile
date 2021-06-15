@@ -1,0 +1,10 @@
+
+target 'NECollectionViewLayout_Example' do
+  pod 'NECollectionViewLayout', :path => '../'
+
+  target 'NECollectionViewLayout_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

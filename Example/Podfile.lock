@@ -1,0 +1,16 @@
+PODS:
+  - NECollectionViewLayout (0.1.0)
+
+DEPENDENCIES:
+  - NECollectionViewLayout (from `../`)
+
+EXTERNAL SOURCES:
+  NECollectionViewLayout:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  NECollectionViewLayout: c2cb01f051e6197cd2ae219140fffd0e1a5dbe2c
+
+PODFILE CHECKSUM: abf0dc9a185f1407a4202a96779be45586c81f68
+
+COCOAPODS: 1.10.0

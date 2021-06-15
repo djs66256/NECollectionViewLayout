@@ -1,0 +1,8 @@
+# abtest 配置问题说明 https://music-rtfm.hz.netease.com/ios-book/docs/standard/EngineerSpec/ABTest/NEABTest.html
+#
+#
+# key 为配置在 ab 后台的实现名称
+# desc 用于描述这个试验
+
+# - key: FH-hmd-array
+#  desc: NEHeimdall 防止数组相关崩溃

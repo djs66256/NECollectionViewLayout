@@ -1,0 +1,6 @@
+framework module NECollectionViewLayout {
+  umbrella header "NECollectionViewLayout.h"
+
+  export *
+  module * { export * }
+}

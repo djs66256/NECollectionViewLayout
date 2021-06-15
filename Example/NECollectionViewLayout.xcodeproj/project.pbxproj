@@ -1,0 +1,757 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3F1A51E4E5C3721C466E1EB9 /* libPods-NECollectionViewLayout_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6308DEE1E7260713481ACBCB /* libPods-NECollectionViewLayout_Example.a */; };
+		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
+		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
+		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
+		6003F598195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F596195388D20070C39A /* InfoPlist.strings */; };
+		6003F59A195388D20070C39A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F599195388D20070C39A /* main.m */; };
+		6003F59E195388D20070C39A /* NEAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* NEAppDelegate.m */; };
+		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
+		6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F5AF195388D20070C39A /* XCTest.framework */; };
+		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
+		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
+		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
+		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
+		655E428D2394EBFB00E9F3FF /* NEMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 655E428C2394EBFB00E9F3FF /* NEMainTableViewController.m */; };
+		655E42912394EC8100E9F3FF /* NEUpdateCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 655E42902394EC8100E9F3FF /* NEUpdateCollectionViewController.m */; };
+		656EACDE239E2B8F00644F23 /* NEPinCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 656EACDD239E2B8F00644F23 /* NEPinCollectionViewController.m */; };
+		656EACE1239E444000644F23 /* NEHeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 656EACE0239E444000644F23 /* NEHeaderCollectionReusableView.m */; };
+		656EACE4239E444900644F23 /* NEFooterCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 656EACE3239E444900644F23 /* NEFooterCollectionReusableView.m */; };
+		656EACE8239E481900644F23 /* NEInsertCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 656EACE7239E481900644F23 /* NEInsertCollectionViewController.m */; };
+		656EACEB239E482200644F23 /* NEDeleteCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 656EACEA239E482200644F23 /* NEDeleteCollectionViewController.m */; };
+		656EACEE239E482A00644F23 /* NEReorderCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 656EACED239E482A00644F23 /* NEReorderCollectionViewController.m */; };
+		656EACF1239E483300644F23 /* NEMoveCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 656EACF0239E483300644F23 /* NEMoveCollectionViewController.m */; };
+		656EACF5239E73F300644F23 /* NEAlignmentCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 656EACF4239E73F300644F23 /* NEAlignmentCollectionViewController.m */; };
+		656F09062397B41000083F27 /* NETextCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 656F09052397B41000083F27 /* NETextCollectionViewCell.m */; };
+		6581CE7B2399400F00F9E5B8 /* NEScrollDirectionCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6581CE7A2399400F00F9E5B8 /* NEScrollDirectionCollectionViewController.m */; };
+		6581CE7E239940A700F9E5B8 /* NEBackgroundCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6581CE7D239940A700F9E5B8 /* NEBackgroundCollectionViewController.m */; };
+		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
+		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		E6BC133E0DF54E846C4DF81D /* libPods-NECollectionViewLayout_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E05BD2CF25C68F2147AEB292 /* libPods-NECollectionViewLayout_Tests.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6003F5B3195388D20070C39A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6003F582195388D10070C39A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6003F589195388D20070C39A;
+			remoteInfo = NECollectionViewLayout;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3143C2E64BAEA6F778473234 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		4856990F236CAA19840A5176 /* Pods-NECollectionViewLayout_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NECollectionViewLayout_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NECollectionViewLayout_Example/Pods-NECollectionViewLayout_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		4BB6091BDD6980E2F43E04A6 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		5C0DBA57CACCFD23BA907CCA /* Pods-NECollectionViewLayout_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NECollectionViewLayout_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-NECollectionViewLayout_Example/Pods-NECollectionViewLayout_Example.release.xcconfig"; sourceTree = "<group>"; };
+		6003F58A195388D20070C39A /* NECollectionViewLayout_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NECollectionViewLayout_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		6003F591195388D20070C39A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		6003F595195388D20070C39A /* NECollectionViewLayout-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NECollectionViewLayout-Info.plist"; sourceTree = "<group>"; };
+		6003F597195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6003F599195388D20070C39A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6003F59B195388D20070C39A /* NECollectionViewLayout-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NECollectionViewLayout-Prefix.pch"; sourceTree = "<group>"; };
+		6003F59C195388D20070C39A /* NEAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NEAppDelegate.h; sourceTree = "<group>"; };
+		6003F59D195388D20070C39A /* NEAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NEAppDelegate.m; sourceTree = "<group>"; };
+		6003F5A8195388D20070C39A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		6003F5AE195388D20070C39A /* NECollectionViewLayout_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NECollectionViewLayout_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		6003F5B7195388D20070C39A /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
+		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
+		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
+		6308DEE1E7260713481ACBCB /* libPods-NECollectionViewLayout_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NECollectionViewLayout_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		655E428B2394EBFB00E9F3FF /* NEMainTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NEMainTableViewController.h; sourceTree = "<group>"; };
+		655E428C2394EBFB00E9F3FF /* NEMainTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NEMainTableViewController.m; sourceTree = "<group>"; };
+		655E428F2394EC8100E9F3FF /* NEUpdateCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NEUpdateCollectionViewController.h; sourceTree = "<group>"; };
+		655E42902394EC8100E9F3FF /* NEUpdateCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NEUpdateCollectionViewController.m; sourceTree = "<group>"; };
+		656EACDC239E2B8F00644F23 /* NEPinCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NEPinCollectionViewController.h; sourceTree = "<group>"; };
+		656EACDD239E2B8F00644F23 /* NEPinCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NEPinCollectionViewController.m; sourceTree = "<group>"; };
+		656EACDF239E444000644F23 /* NEHeaderCollectionReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NEHeaderCollectionReusableView.h; sourceTree = "<group>"; };
+		656EACE0239E444000644F23 /* NEHeaderCollectionReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NEHeaderCollectionReusableView.m; sourceTree = "<group>"; };
+		656EACE2239E444900644F23 /* NEFooterCollectionReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NEFooterCollectionReusableView.h; sourceTree = "<group>"; };
+		656EACE3239E444900644F23 /* NEFooterCollectionReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NEFooterCollectionReusableView.m; sourceTree = "<group>"; };
+		656EACE6239E481900644F23 /* NEInsertCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NEInsertCollectionViewController.h; sourceTree = "<group>"; };
+		656EACE7239E481900644F23 /* NEInsertCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NEInsertCollectionViewController.m; sourceTree = "<group>"; };
+		656EACE9239E482200644F23 /* NEDeleteCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NEDeleteCollectionViewController.h; sourceTree = "<group>"; };
+		656EACEA239E482200644F23 /* NEDeleteCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NEDeleteCollectionViewController.m; sourceTree = "<group>"; };
+		656EACEC239E482A00644F23 /* NEReorderCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NEReorderCollectionViewController.h; sourceTree = "<group>"; };
+		656EACED239E482A00644F23 /* NEReorderCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NEReorderCollectionViewController.m; sourceTree = "<group>"; };
+		656EACEF239E483300644F23 /* NEMoveCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NEMoveCollectionViewController.h; sourceTree = "<group>"; };
+		656EACF0239E483300644F23 /* NEMoveCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NEMoveCollectionViewController.m; sourceTree = "<group>"; };
+		656EACF3239E73F300644F23 /* NEAlignmentCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NEAlignmentCollectionViewController.h; sourceTree = "<group>"; };
+		656EACF4239E73F300644F23 /* NEAlignmentCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NEAlignmentCollectionViewController.m; sourceTree = "<group>"; };
+		656F09042397B41000083F27 /* NETextCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NETextCollectionViewCell.h; sourceTree = "<group>"; };
+		656F09052397B41000083F27 /* NETextCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NETextCollectionViewCell.m; sourceTree = "<group>"; };
+		6581CE792399400F00F9E5B8 /* NEScrollDirectionCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NEScrollDirectionCollectionViewController.h; sourceTree = "<group>"; };
+		6581CE7A2399400F00F9E5B8 /* NEScrollDirectionCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NEScrollDirectionCollectionViewController.m; sourceTree = "<group>"; };
+		6581CE7C239940A700F9E5B8 /* NEBackgroundCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NEBackgroundCollectionViewController.h; sourceTree = "<group>"; };
+		6581CE7D239940A700F9E5B8 /* NEBackgroundCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NEBackgroundCollectionViewController.m; sourceTree = "<group>"; };
+		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C82A9C77B14B1313B0C7F67B /* NECollectionViewLayout.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = NECollectionViewLayout.podspec; path = ../NECollectionViewLayout.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		E05BD2CF25C68F2147AEB292 /* libPods-NECollectionViewLayout_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NECollectionViewLayout_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED995AD365AA0B8579E8FF99 /* Pods-NECollectionViewLayout_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NECollectionViewLayout_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NECollectionViewLayout_Tests/Pods-NECollectionViewLayout_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		F1F94D8C1AFFDE784831DBFA /* Pods-NECollectionViewLayout_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NECollectionViewLayout_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NECollectionViewLayout_Tests/Pods-NECollectionViewLayout_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6003F587195388D20070C39A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
+				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
+				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
+				3F1A51E4E5C3721C466E1EB9 /* libPods-NECollectionViewLayout_Example.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6003F5AB195388D20070C39A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
+				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
+				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
+				E6BC133E0DF54E846C4DF81D /* libPods-NECollectionViewLayout_Tests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6003F581195388D10070C39A = {
+			isa = PBXGroup;
+			children = (
+				60FF7A9C1954A5C5007DD14C /* Podspec Metadata */,
+				6003F593195388D20070C39A /* Example for NECollectionViewLayout */,
+				6003F5B5195388D20070C39A /* Tests */,
+				6003F58C195388D20070C39A /* Frameworks */,
+				6003F58B195388D20070C39A /* Products */,
+				B796F6BE9CCB176B368E4C4A /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		6003F58B195388D20070C39A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6003F58A195388D20070C39A /* NECollectionViewLayout_Example.app */,
+				6003F5AE195388D20070C39A /* NECollectionViewLayout_Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6003F58C195388D20070C39A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6003F58D195388D20070C39A /* Foundation.framework */,
+				6003F58F195388D20070C39A /* CoreGraphics.framework */,
+				6003F591195388D20070C39A /* UIKit.framework */,
+				6003F5AF195388D20070C39A /* XCTest.framework */,
+				6308DEE1E7260713481ACBCB /* libPods-NECollectionViewLayout_Example.a */,
+				E05BD2CF25C68F2147AEB292 /* libPods-NECollectionViewLayout_Tests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6003F593195388D20070C39A /* Example for NECollectionViewLayout */ = {
+			isa = PBXGroup;
+			children = (
+				6003F59C195388D20070C39A /* NEAppDelegate.h */,
+				6003F59D195388D20070C39A /* NEAppDelegate.m */,
+				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
+				655E428B2394EBFB00E9F3FF /* NEMainTableViewController.h */,
+				655E428C2394EBFB00E9F3FF /* NEMainTableViewController.m */,
+				656F09032397B40100083F27 /* Cell */,
+				65966927239623550069C004 /* ScrollDirection */,
+				659669262396234A0069C004 /* Alignment */,
+				659669252396233E0069C004 /* Background */,
+				65966924239623350069C004 /* Pin */,
+				655E42972394FF9200E9F3FF /* Reload */,
+				655E42962394F75300E9F3FF /* Insert */,
+				655E42952394F74D00E9F3FF /* Delete */,
+				655E42942394F73E00E9F3FF /* Default */,
+				655E42932394F72E00E9F3FF /* Reorder */,
+				655E42922394F72800E9F3FF /* Move */,
+				655E428E2394EC4100E9F3FF /* Update */,
+				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
+				6003F5A8195388D20070C39A /* Images.xcassets */,
+				6003F594195388D20070C39A /* Supporting Files */,
+			);
+			name = "Example for NECollectionViewLayout";
+			path = NECollectionViewLayout;
+			sourceTree = "<group>";
+		};
+		6003F594195388D20070C39A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6003F595195388D20070C39A /* NECollectionViewLayout-Info.plist */,
+				6003F596195388D20070C39A /* InfoPlist.strings */,
+				6003F599195388D20070C39A /* main.m */,
+				6003F59B195388D20070C39A /* NECollectionViewLayout-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6003F5B5195388D20070C39A /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				6003F5BB195388D20070C39A /* Tests.m */,
+				6003F5B6195388D20070C39A /* Supporting Files */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		6003F5B6195388D20070C39A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6003F5B7195388D20070C39A /* Tests-Info.plist */,
+				6003F5B8195388D20070C39A /* InfoPlist.strings */,
+				606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		60FF7A9C1954A5C5007DD14C /* Podspec Metadata */ = {
+			isa = PBXGroup;
+			children = (
+				C82A9C77B14B1313B0C7F67B /* NECollectionViewLayout.podspec */,
+				3143C2E64BAEA6F778473234 /* README.md */,
+				4BB6091BDD6980E2F43E04A6 /* LICENSE */,
+			);
+			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		655E428E2394EC4100E9F3FF /* Update */ = {
+			isa = PBXGroup;
+			children = (
+				655E428F2394EC8100E9F3FF /* NEUpdateCollectionViewController.h */,
+				655E42902394EC8100E9F3FF /* NEUpdateCollectionViewController.m */,
+			);
+			name = Update;
+			sourceTree = "<group>";
+		};
+		655E42922394F72800E9F3FF /* Move */ = {
+			isa = PBXGroup;
+			children = (
+				656EACEF239E483300644F23 /* NEMoveCollectionViewController.h */,
+				656EACF0239E483300644F23 /* NEMoveCollectionViewController.m */,
+			);
+			name = Move;
+			sourceTree = "<group>";
+		};
+		655E42932394F72E00E9F3FF /* Reorder */ = {
+			isa = PBXGroup;
+			children = (
+				656EACEC239E482A00644F23 /* NEReorderCollectionViewController.h */,
+				656EACED239E482A00644F23 /* NEReorderCollectionViewController.m */,
+			);
+			name = Reorder;
+			sourceTree = "<group>";
+		};
+		655E42942394F73E00E9F3FF /* Default */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Default;
+			sourceTree = "<group>";
+		};
+		655E42952394F74D00E9F3FF /* Delete */ = {
+			isa = PBXGroup;
+			children = (
+				656EACE9239E482200644F23 /* NEDeleteCollectionViewController.h */,
+				656EACEA239E482200644F23 /* NEDeleteCollectionViewController.m */,
+			);
+			name = Delete;
+			sourceTree = "<group>";
+		};
+		655E42962394F75300E9F3FF /* Insert */ = {
+			isa = PBXGroup;
+			children = (
+				656EACE6239E481900644F23 /* NEInsertCollectionViewController.h */,
+				656EACE7239E481900644F23 /* NEInsertCollectionViewController.m */,
+			);
+			name = Insert;
+			sourceTree = "<group>";
+		};
+		655E42972394FF9200E9F3FF /* Reload */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Reload;
+			sourceTree = "<group>";
+		};
+		656F09032397B40100083F27 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				656F09042397B41000083F27 /* NETextCollectionViewCell.h */,
+				656F09052397B41000083F27 /* NETextCollectionViewCell.m */,
+				656EACDF239E444000644F23 /* NEHeaderCollectionReusableView.h */,
+				656EACE0239E444000644F23 /* NEHeaderCollectionReusableView.m */,
+				656EACE2239E444900644F23 /* NEFooterCollectionReusableView.h */,
+				656EACE3239E444900644F23 /* NEFooterCollectionReusableView.m */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		65966924239623350069C004 /* Pin */ = {
+			isa = PBXGroup;
+			children = (
+				656EACDC239E2B8F00644F23 /* NEPinCollectionViewController.h */,
+				656EACDD239E2B8F00644F23 /* NEPinCollectionViewController.m */,
+			);
+			name = Pin;
+			sourceTree = "<group>";
+		};
+		659669252396233E0069C004 /* Background */ = {
+			isa = PBXGroup;
+			children = (
+				6581CE7C239940A700F9E5B8 /* NEBackgroundCollectionViewController.h */,
+				6581CE7D239940A700F9E5B8 /* NEBackgroundCollectionViewController.m */,
+			);
+			name = Background;
+			sourceTree = "<group>";
+		};
+		659669262396234A0069C004 /* Alignment */ = {
+			isa = PBXGroup;
+			children = (
+				656EACF3239E73F300644F23 /* NEAlignmentCollectionViewController.h */,
+				656EACF4239E73F300644F23 /* NEAlignmentCollectionViewController.m */,
+			);
+			name = Alignment;
+			sourceTree = "<group>";
+		};
+		65966927239623550069C004 /* ScrollDirection */ = {
+			isa = PBXGroup;
+			children = (
+				6581CE792399400F00F9E5B8 /* NEScrollDirectionCollectionViewController.h */,
+				6581CE7A2399400F00F9E5B8 /* NEScrollDirectionCollectionViewController.m */,
+			);
+			name = ScrollDirection;
+			sourceTree = "<group>";
+		};
+		B796F6BE9CCB176B368E4C4A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4856990F236CAA19840A5176 /* Pods-NECollectionViewLayout_Example.debug.xcconfig */,
+				5C0DBA57CACCFD23BA907CCA /* Pods-NECollectionViewLayout_Example.release.xcconfig */,
+				F1F94D8C1AFFDE784831DBFA /* Pods-NECollectionViewLayout_Tests.debug.xcconfig */,
+				ED995AD365AA0B8579E8FF99 /* Pods-NECollectionViewLayout_Tests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6003F589195388D20070C39A /* NECollectionViewLayout_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "NECollectionViewLayout_Example" */;
+			buildPhases = (
+				70FB4D16CE1D65BC973DFDF8 /* [CP] Check Pods Manifest.lock */,
+				6003F586195388D20070C39A /* Sources */,
+				6003F587195388D20070C39A /* Frameworks */,
+				6003F588195388D20070C39A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NECollectionViewLayout_Example;
+			productName = NECollectionViewLayout;
+			productReference = 6003F58A195388D20070C39A /* NECollectionViewLayout_Example.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6003F5AD195388D20070C39A /* NECollectionViewLayout_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "NECollectionViewLayout_Tests" */;
+			buildPhases = (
+				DE116D99DD0B6B6804753FAB /* [CP] Check Pods Manifest.lock */,
+				6003F5AA195388D20070C39A /* Sources */,
+				6003F5AB195388D20070C39A /* Frameworks */,
+				6003F5AC195388D20070C39A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6003F5B4195388D20070C39A /* PBXTargetDependency */,
+			);
+			name = NECollectionViewLayout_Tests;
+			productName = NECollectionViewLayoutTests;
+			productReference = 6003F5AE195388D20070C39A /* NECollectionViewLayout_Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6003F582195388D10070C39A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = NE;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = Daniel;
+				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = PA529D52F3;
+					};
+					6003F5AD195388D20070C39A = {
+						TestTargetID = 6003F589195388D20070C39A;
+					};
+				};
+			};
+			buildConfigurationList = 6003F585195388D10070C39A /* Build configuration list for PBXProject "NECollectionViewLayout" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				en,
+				Base,
+			);
+			mainGroup = 6003F581195388D10070C39A;
+			productRefGroup = 6003F58B195388D20070C39A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6003F589195388D20070C39A /* NECollectionViewLayout_Example */,
+				6003F5AD195388D20070C39A /* NECollectionViewLayout_Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6003F588195388D20070C39A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
+				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
+				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6003F5AC195388D20070C39A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		70FB4D16CE1D65BC973DFDF8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NECollectionViewLayout_Example-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DE116D99DD0B6B6804753FAB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NECollectionViewLayout_Tests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6003F586195388D20070C39A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6581CE7B2399400F00F9E5B8 /* NEScrollDirectionCollectionViewController.m in Sources */,
+				6581CE7E239940A700F9E5B8 /* NEBackgroundCollectionViewController.m in Sources */,
+				656EACF1239E483300644F23 /* NEMoveCollectionViewController.m in Sources */,
+				656EACEB239E482200644F23 /* NEDeleteCollectionViewController.m in Sources */,
+				655E428D2394EBFB00E9F3FF /* NEMainTableViewController.m in Sources */,
+				6003F59E195388D20070C39A /* NEAppDelegate.m in Sources */,
+				655E42912394EC8100E9F3FF /* NEUpdateCollectionViewController.m in Sources */,
+				656EACE1239E444000644F23 /* NEHeaderCollectionReusableView.m in Sources */,
+				656EACE8239E481900644F23 /* NEInsertCollectionViewController.m in Sources */,
+				656EACEE239E482A00644F23 /* NEReorderCollectionViewController.m in Sources */,
+				656EACE4239E444900644F23 /* NEFooterCollectionReusableView.m in Sources */,
+				656EACF5239E73F300644F23 /* NEAlignmentCollectionViewController.m in Sources */,
+				6003F59A195388D20070C39A /* main.m in Sources */,
+				656F09062397B41000083F27 /* NETextCollectionViewCell.m in Sources */,
+				656EACDE239E2B8F00644F23 /* NEPinCollectionViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6003F5AA195388D20070C39A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6003F5BC195388D20070C39A /* Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6003F5B4195388D20070C39A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6003F589195388D20070C39A /* NECollectionViewLayout_Example */;
+			targetProxy = 6003F5B3195388D20070C39A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6003F596195388D20070C39A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6003F597195388D20070C39A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		6003F5B8195388D20070C39A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6003F5B9195388D20070C39A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				71719F9E1E33DC2100824A3D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6003F5BD195388D20070C39A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6003F5BE195388D20070C39A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6003F5C0195388D20070C39A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4856990F236CAA19840A5176 /* Pods-NECollectionViewLayout_Example.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = PA529D52F3;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NECollectionViewLayout/NECollectionViewLayout-Prefix.pch";
+				INFOPLIST_FILE = "NECollectionViewLayout/NECollectionViewLayout-Info.plist";
+				MODULE_NAME = ExampleApp;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		6003F5C1195388D20070C39A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C0DBA57CACCFD23BA907CCA /* Pods-NECollectionViewLayout_Example.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = PA529D52F3;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NECollectionViewLayout/NECollectionViewLayout-Prefix.pch";
+				INFOPLIST_FILE = "NECollectionViewLayout/NECollectionViewLayout-Info.plist";
+				MODULE_NAME = ExampleApp;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		6003F5C3195388D20070C39A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F1F94D8C1AFFDE784831DBFA /* Pods-NECollectionViewLayout_Tests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Tests/Tests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NECollectionViewLayout_Example.app/NECollectionViewLayout_Example";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		6003F5C4195388D20070C39A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED995AD365AA0B8579E8FF99 /* Pods-NECollectionViewLayout_Tests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
+				INFOPLIST_FILE = "Tests/Tests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NECollectionViewLayout_Example.app/NECollectionViewLayout_Example";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6003F585195388D10070C39A /* Build configuration list for PBXProject "NECollectionViewLayout" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6003F5BD195388D20070C39A /* Debug */,
+				6003F5BE195388D20070C39A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "NECollectionViewLayout_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6003F5C0195388D20070C39A /* Debug */,
+				6003F5C1195388D20070C39A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "NECollectionViewLayout_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6003F5C3195388D20070C39A /* Debug */,
+				6003F5C4195388D20070C39A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6003F582195388D10070C39A /* Project object */;
+}
