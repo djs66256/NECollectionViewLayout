@@ -218,6 +218,8 @@ void clear ## Name() { name ## _ = false; }
     }
     NSUInteger section() const { return section_; }
     
+    auto itemCount() const { return items_.size(); }
+    
     void setContentOffset(CGPoint offset) {
         scrollContent_.setContentOffset(offset);
         markLayoutDirty();

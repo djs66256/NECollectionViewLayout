@@ -38,7 +38,7 @@
 }
 
 - (void)loadView {
-    self.collectionView = [[NEOptimizeCollectionView alloc] initWithFrame:UIScreen.mainScreen.bounds
+    self.collectionView = [[UICollectionView alloc] initWithFrame:UIScreen.mainScreen.bounds
                                                      collectionViewLayout:self.collectionViewLayout];
     self.collectionView.backgroundColor = UIColor.blackColor;
 //    self.collectionView = [[UICollectionView alloc] initWithFrame:UIScreen.mainScreen.bounds

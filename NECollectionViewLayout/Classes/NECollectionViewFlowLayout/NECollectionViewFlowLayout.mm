@@ -19,13 +19,240 @@ extern "C" NSString *const NECollectionElementKindSectionBackground = @"NECollec
 extern "C" NSString *const NECollectionElementKindSectionScrollContent = @"NECollectionElementKindSectionScrollContent";
 
 using namespace NE::CollectionViewFlowLayout;
+/*
+namespace {
+struct CollectionViewUpdater {
+    struct Item {
+        Item() : inserted_{true} { }
+        Item(NSInteger index) : indexBefore_{index} {}
+        bool inserted() { return inserted_; }
+        NSInteger indexBefore() { return indexBefore_; }
+    private:
+        bool inserted_ = false;
+        NSInteger indexBefore_;
+    };
+    struct Section {
+        Section() : inserted_{true} { }
+        Section(NSInteger index, NSInteger count) : indexBefore_{index}, count_{count} {
+            items_.reserve(count);
+            for (NSInteger i = 0; i < count; i++) {
+                items_.emplace_back(i);
+            }
+        }
+        bool inserted() { return inserted_; }
+        NSInteger indexBefore() { return indexBefore_; }
+        Item& item(NSInteger index) { return items_.at(index); }
+        void insert(NSInteger item) {
+            if (item <= items_.size()) {
+                items_.emplace(items_.begin() + item);
+            }
+        }
+        void remove(NSInteger item) {
+            if (item < items_.size()) {
+                items_.erase(items_.begin() + item);
+            }
+        }
+        void move(NSInteger fromItem, NSInteger toItem) {
+            if (fromItem < items_.size() && toItem < items_.size()) {
+                std::iter_swap(items_.begin() + fromItem, items_.begin() + toItem);
+            }
+        }
+    private:
+        friend class CollectionViewUpdater;
+        bool inserted_ = false;
+        NSInteger indexBefore_;
+        NSInteger count_;
+        std::vector<Item> items_;
+    };
+    
+    using SectionsType = std::vector<NE::CollectionViewFlowLayout::Section>;
 
+    void reset(const SectionsType& sections) {
+        count_ = static_cast<NSInteger>(sections.size());
+        sections_.clear();
+        sections_.reserve(static_cast<size_t>(count_));
+        for (NSInteger i = 0; i < count_; i++) {
+            sections_.emplace_back(i, sections.at(i).itemCount());
+        }
+    }
+    
+    void insert(NSInteger section) {
+        if (section <= sections_.size()) {
+            sections_.emplace(sections_.begin() + section);
+        }
+    }
+    
+    void insert(NSInteger section, NSInteger item) {
+        if (section < sections_.size()) {
+            this->section(section).insert(item);
+        }
+    }
+    
+    void remove(NSInteger section) {
+        if (section < sections_.size()) {
+            sections_.erase(sections_.begin() + section);
+        }
+    }
+    
+    void remove(NSInteger section, NSInteger item) {
+        if (section < sections_.size()) {
+            this->section(section).remove(item);
+        }
+    }
+    
+    void move(NSInteger fromSection, NSInteger toSection) {
+        if (fromSection < sections_.size() && toSection < sections_.size()) {
+            std::iter_swap(sections_.begin() + fromSection, sections_.begin() + toSection);
+        }
+    }
+    
+    void move(NSInteger fromSection, NSInteger fromItem, NSInteger toSection, NSInteger toItem) {
+        if (fromSection == toSection && fromSection < sections_.size()) {
+            sections_.at(fromSection).move(fromItem, toItem);
+        }
+    }
+    
+    using IndexPath = std::pair<NSInteger, NSInteger>;
+    std::optional<IndexPath> findIndexPathAfterUpdate(IndexPath oldIndexPath) {
+        for (NSInteger i = 0; i < sections_.size(); i++) {
+            auto& section = this->section(i);
+            if (!section.inserted() && section.indexBefore() == oldIndexPath.first) {
+                for (NSInteger j = 0; j < sections_.size(); j++) {
+                    auto& item = section.item(j);
+                    if (!item.inserted() && item.indexBefore() == oldIndexPath.second) {
+                        return IndexPath{ i, j };
+                    }
+                }
+            }
+        }
+        return std::nullopt;
+    }
+    
+    std::optional<IndexPath> findIndexPathBeforeUpdate(IndexPath newIndexPath) {
+        if (newIndexPath.first < sections_.size()) {
+            auto& section = this->section(newIndexPath.first);
+            if (!section.inserted() && newIndexPath.second < section.items_.size()) {
+                auto& item = section.item(newIndexPath.second);
+                if (!item.inserted()) {
+                    return IndexPath{ section.indexBefore(), item.indexBefore() };
+                }
+            }
+        }
+        
+        return std::nullopt;
+    }
+    
+    void update(NSArray<UICollectionViewUpdateItem *> *updateItems) {
+        std::vector<NSInteger> insertedSections;
+        std::vector<NSInteger> deletedSections;
+        std::vector<std::pair<NSInteger, NSInteger>> movedSections;
+        std::vector<CollectionViewUpdater::IndexPath> insertedIndexPaths;
+        std::vector<CollectionViewUpdater::IndexPath> deletedIndexPaths;
+        std::vector<std::pair<CollectionViewUpdater::IndexPath, CollectionViewUpdater::IndexPath>> movedIndexPaths;
+        
+        for (UICollectionViewUpdateItem *item in updateItems) {
+            switch (item.updateAction) {
+                case UICollectionUpdateActionInsert: {
+                    auto section = item.indexPathAfterUpdate.section;
+                    auto it = item.indexPathAfterUpdate.item;
+                    if (it == NSNotFound) {
+                        insertedSections.emplace_back(section);
+                    }
+                    else {
+                        insertedIndexPaths.emplace_back(section, it);
+                    }
+                }
+                    break;
+                case UICollectionUpdateActionDelete: {
+                    auto section = item.indexPathBeforeUpdate.section;
+                    auto it = item.indexPathBeforeUpdate.item;
+                    if (it == NSNotFound) {
+                        deletedSections.emplace_back(section);
+                    }
+                    else {
+                        deletedIndexPaths.emplace_back(section, it);
+                    }
+                }
+                    break;
+                case UICollectionUpdateActionMove: {
+                    auto fs = item.indexPathBeforeUpdate.section;
+                    auto fi = item.indexPathBeforeUpdate.item;
+                    auto ts = item.indexPathAfterUpdate.section;
+                    auto ti = item.indexPathAfterUpdate.item;
+                    if (fi == NSNotFound || ti == NSNotFound) {
+                        movedSections.emplace_back(fs, ts);
+                    }
+                    else {
+                        movedIndexPaths.emplace_back(CollectionViewUpdater::IndexPath{fs, fi},
+                                                     CollectionViewUpdater::IndexPath{ts, ti});
+                    }
+                }
+                    break;
+                    
+                default:
+                    break;
+            }
+        }
+        
+        if (insertedSections.size()) {
+            std::sort(insertedSections.begin(), insertedSections.end());
+            for (auto section : insertedSections) {
+                insert(section);
+            }
+        }
+        if (deletedSections.size()) {
+            std::sort(deletedSections.begin(), deletedSections.end(), std::greater<>());
+            for (auto section : deletedSections) {
+                remove(section);
+            }
+        }
+        if (movedSections.size()) {
+            for (auto [from, to] : movedSections) {
+                move(from, to);
+            }
+        }
+        struct IndexPathLesser {
+            bool operator()(CollectionViewUpdater::IndexPath& l, CollectionViewUpdater::IndexPath &r) {
+                return l.first < r.first || (l.first == r.first && l.second < r.second);
+            }
+        };
+        if (insertedIndexPaths.size()) {
+            std::sort(insertedIndexPaths.begin(), insertedIndexPaths.end(), IndexPathLesser());
+            for (auto& indexPath : insertedIndexPaths) {
+                insert(indexPath.first, indexPath.second);
+            }
+        }
+        struct IndexPathGreater {
+            bool operator()(CollectionViewUpdater::IndexPath& l, CollectionViewUpdater::IndexPath &r) {
+                return l.first > r.first || (l.first == r.first && l.second > r.second);
+            }
+        };
+        if (deletedIndexPaths.size()) {
+            std::sort(deletedIndexPaths.begin(), deletedIndexPaths.end(), IndexPathLesser());
+            for (auto& indexPath : deletedIndexPaths) {
+                remove(indexPath.first, indexPath.second);
+            }
+        }
+        if (movedIndexPaths.size()) {
+            for (auto& [from, to] : movedIndexPaths) {
+                move(from.first, from.second, to.first, to.second);
+            }
+        }
+    }
+    
+    Section& section(NSInteger index) {
+        return sections_.at(index);
+    }
+private:
+    std::vector<Section> sections_;
+    NSInteger count_;
+};
+}
+*/
 @interface NECollectionViewFlowLayout () <NECollectionViewFlowLayoutAttributesDelegate>
 
 @property (nonatomic, strong) NSMutableSet<NSIndexPath *> *insertedIndexPaths;
 @property (nonatomic, strong) NSMutableSet<NSIndexPath *> *deletedIndexPaths;
-@property (nonatomic, strong) NSArray<UICollectionViewUpdateItem *> *movedIndexPaths;
-@property (nonatomic, strong) NSArray *sortedInsertedIndexPaths;
 
 @end
 
@@ -146,7 +373,6 @@ using namespace NE::CollectionViewFlowLayout;
 - (void)prepareForCollectionViewUpdates:(NSArray<UICollectionViewUpdateItem *> *)updateItems {
     _insertedIndexPaths = [NSMutableSet set];
     _deletedIndexPaths = [NSMutableSet set];
-    NSMutableArray *movedIndexPaths = [NSMutableArray array];
     for (UICollectionViewUpdateItem *item in updateItems) {
         if (item.updateAction == UICollectionUpdateActionInsert) {
             [_insertedIndexPaths addObject:item.indexPathAfterUpdate];
@@ -154,71 +380,12 @@ using namespace NE::CollectionViewFlowLayout;
         else if (item.updateAction == UICollectionUpdateActionDelete) {
             [_deletedIndexPaths addObject:item.indexPathBeforeUpdate];
         }
-        else if (item.updateAction == UICollectionUpdateActionMove) {
-            [movedIndexPaths addObject:item];
-        }
     }
-    _movedIndexPaths = movedIndexPaths;
-    _sortedInsertedIndexPaths = [_insertedIndexPaths sortedArrayUsingDescriptors:@[
-        [NSSortDescriptor sortDescriptorWithKey:@"section" ascending:YES],
-        [NSSortDescriptor sortDescriptorWithKey:@"item" ascending:YES]
-    ]];
 }
 
 - (void)finalizeCollectionViewUpdates {
     self.insertedIndexPaths = nil;
     self.deletedIndexPaths = nil;
-    self.sortedInsertedIndexPaths = nil;
-    self.movedIndexPaths = nil;
-}
-
-- (NSIndexPath *)indexPathBeforeUpdatesForItemAtIndexPath:(NSIndexPath *)newIndexPath {
-    if ([_insertedIndexPaths containsObject:newIndexPath]) {
-        return nil;
-    }
-    for (UICollectionViewUpdateItem *item in _movedIndexPaths) {
-        auto indexPathAfterUpdate = item.indexPathAfterUpdate;
-        if ([indexPathAfterUpdate isEqual:newIndexPath]) {
-            // Move item
-            return item.indexPathBeforeUpdate;
-        }
-        else if (indexPathAfterUpdate.item == NSNotFound && indexPathAfterUpdate.section == newIndexPath.section) {
-            // Move section
-            return [NSIndexPath indexPathForItem:newIndexPath.item inSection:item.indexPathBeforeUpdate.section];
-        }
-    }
-    
-    auto section = newIndexPath.section;
-    auto item = newIndexPath.item;
-    NSInteger newSection = section;
-    NSInteger newItem = item;
-    
-    for (NSIndexPath *insertedIndexPath in _sortedInsertedIndexPaths) {
-        if (insertedIndexPath.item == NSNotFound && insertedIndexPath.section <= section) {
-            // Insert section before
-            newSection --;
-        }
-        else if (insertedIndexPath.section == section && insertedIndexPath.item <= item) {
-            // Insert item before
-            newItem --;
-        }
-    }
-    
-    for (NSIndexPath *deletedIndexPath in _deletedIndexPaths) {
-        if (deletedIndexPath.item == NSNotFound && deletedIndexPath.section <= section) {
-            // Delete section before
-            newSection ++;
-        }
-        else if (deletedIndexPath.section == section && deletedIndexPath.item <= item) {
-            // Delete item before
-            newItem ++;
-        }
-    }
-    
-    if (newSection < 0 || newItem < 0) {
-        return nil;
-    }
-    return [NSIndexPath indexPathForItem:newItem inSection:newSection];
 }
 
 - (BOOL)indexPathsBeforeUpdates:(NSMutableSet<NSIndexPath *> *)indexPathsBeforeUpdates containsItemIndexPath:(NSIndexPath *)itemIndexPath {
@@ -235,24 +402,14 @@ using namespace NE::CollectionViewFlowLayout;
 
 - (nullable UICollectionViewLayoutAttributes *)initialLayoutAttributesForAppearingItemAtIndexPath:(NSIndexPath *)itemIndexPath {
     if ([self indexPathsBeforeUpdates:self.insertedIndexPaths containsItemIndexPath:itemIndexPath] && self.appearenceAnimator) {
-        auto prevIndexPath = [self indexPathBeforeUpdatesForItemAtIndexPath:itemIndexPath];
-        UICollectionViewLayoutAttributes *prevAttr = nil;
-        if (prevIndexPath) {
-            prevAttr = _calculator.prevItemAttributedAtIndexPath(prevIndexPath);
-        }
+        UICollectionViewLayoutAttributes *prevAttr = _calculator.itemAttributedAtIndexPath(itemIndexPath);
         if ([self.appearenceAnimator respondsToSelector:@selector(layout:initialLayoutAttributesForAppearingItemAtIndexPath:previousAttributes:)]) {
             return [self.appearenceAnimator layout:self initialLayoutAttributesForAppearingItemAtIndexPath:itemIndexPath previousAttributes:prevAttr];
         }
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-        else if ([self.appearenceAnimator respondsToSelector:@selector(layout:initialLayoutAttributesForAppearingItemAtIndexPath:)]) {
-            return [self.appearenceAnimator layout:self initialLayoutAttributesForAppearingItemAtIndexPath:itemIndexPath];
-        }
-#pragma GCC diagnostic pop
         return prevAttr;
     }
     
-    return [super initialLayoutAttributesForAppearingItemAtIndexPath:itemIndexPath];
+    return _calculator.itemAttributedAtIndexPath(itemIndexPath) ?: [super initialLayoutAttributesForAppearingItemAtIndexPath:itemIndexPath];
 }
 
 - (nullable UICollectionViewLayoutAttributes *)finalLayoutAttributesForDisappearingItemAtIndexPath:(NSIndexPath *)itemIndexPath {
@@ -262,45 +419,36 @@ using namespace NE::CollectionViewFlowLayout;
             auto prevAttr = _calculator.prevItemAttributedAtIndexPath(itemIndexPath);
             animAttr = [self.appearenceAnimator layout:self finalLayoutAttributesForDisappearingItemAtIndexPath:itemIndexPath previousAttributes:prevAttr];
         }
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-        else if ([self.appearenceAnimator respondsToSelector:@selector(layout:finalLayoutAttributesForDisappearingItemAtIndexPath:)]) {
-            animAttr = [self.appearenceAnimator layout:self finalLayoutAttributesForDisappearingItemAtIndexPath:itemIndexPath];
-        }
-#pragma GCC diagnostic pop
         return animAttr ?: [super finalLayoutAttributesForDisappearingItemAtIndexPath:itemIndexPath];
     }
     
-    return [super finalLayoutAttributesForDisappearingItemAtIndexPath:itemIndexPath];
+    return _calculator.prevItemAttributedAtIndexPath(itemIndexPath) ?: [super finalLayoutAttributesForDisappearingItemAtIndexPath:itemIndexPath];
 }
 
 - (UICollectionViewLayoutAttributes *)initialLayoutAttributesForAppearingSupplementaryElementOfKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)elementIndexPath {
-    auto prevIndexPath = [self indexPathBeforeUpdatesForItemAtIndexPath:elementIndexPath];
-    auto prevAttr = _calculator.prevSupplementaryAtIndexPath(elementKind, prevIndexPath, self.visibleRect);
+    UICollectionViewLayoutAttributes *prevAttr = _calculator.supplementaryAtIndexPath(elementKind, elementIndexPath, self.visibleRect);
     if ([self.supplementaryAppearenceAnimator respondsToSelector:@selector(layout:initialLayoutAttributesForAppearingItemAtIndexPath:elementKind:previousAttributes:)]) {
         return [self.supplementaryAppearenceAnimator layout:self
          initialLayoutAttributesForAppearingItemAtIndexPath:elementIndexPath
                                                 elementKind:elementKind
                                          previousAttributes:prevAttr];
     }
-    return prevAttr;
+    return prevAttr ?: [super initialLayoutAttributesForAppearingSupplementaryElementOfKind:elementKind atIndexPath:elementIndexPath];
 }
 
 - (UICollectionViewLayoutAttributes *)finalLayoutAttributesForDisappearingSupplementaryElementOfKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)elementIndexPath {
-    if ([self.supplementaryAppearenceAnimator respondsToSelector:@selector(layout:finalLayoutAttributesForDisappearingItemAtIndexPath:elementKind:previousAttributes:)]) {
-        auto prevAttr = _calculator.prevSupplementaryAtIndexPath(elementKind, elementIndexPath, self.visibleRect);
+    UICollectionViewLayoutAttributes *afterAttr = _calculator.prevSupplementaryAtIndexPath(elementKind, elementIndexPath, self.visibleRect);
+    if ([self.supplementaryAppearenceAnimator respondsToSelector:@selector(layout:initialLayoutAttributesForAppearingItemAtIndexPath:elementKind:previousAttributes:)]) {
         return [self.supplementaryAppearenceAnimator layout:self
-        finalLayoutAttributesForDisappearingItemAtIndexPath:elementIndexPath
+         initialLayoutAttributesForAppearingItemAtIndexPath:elementIndexPath
                                                 elementKind:elementKind
-                                         previousAttributes:prevAttr];
+                                         previousAttributes:afterAttr];
     }
-    
-    return _calculator.supplementaryAtIndexPath(elementKind, elementIndexPath, self.visibleRect);
+    return afterAttr ?: [super initialLayoutAttributesForAppearingSupplementaryElementOfKind:elementKind atIndexPath:elementIndexPath];
 }
 
 - (UICollectionViewLayoutAttributes *)initialLayoutAttributesForAppearingDecorationElementOfKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)decorationIndexPath {
-    auto prevIndexPath = [self indexPathBeforeUpdatesForItemAtIndexPath:decorationIndexPath];
-    auto prevAttr = _calculator.prevDecorationAtIndexPath(elementKind, prevIndexPath);
+    auto prevAttr = _calculator.decorationAtIndexPath(elementKind, decorationIndexPath);
     if ([self.decorationAppearenceAnimator respondsToSelector:@selector(layout:initialLayoutAttributesForAppearingItemAtIndexPath:elementKind:previousAttributes:)]) {
         return [self.decorationAppearenceAnimator layout:self
       initialLayoutAttributesForAppearingItemAtIndexPath:decorationIndexPath
@@ -311,15 +459,15 @@ using namespace NE::CollectionViewFlowLayout;
 }
 
 - (UICollectionViewLayoutAttributes *)finalLayoutAttributesForDisappearingDecorationElementOfKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)decorationIndexPath {
+    auto prevAttr = _calculator.prevDecorationAtIndexPath(elementKind, decorationIndexPath);
     if ([self.decorationAppearenceAnimator respondsToSelector:@selector(layout:finalLayoutAttributesForDisappearingItemAtIndexPath:elementKind:previousAttributes:)]) {
-        auto prevAttr = _calculator.prevDecorationAtIndexPath(elementKind, decorationIndexPath);
         return [self.decorationAppearenceAnimator layout:self
      finalLayoutAttributesForDisappearingItemAtIndexPath:decorationIndexPath
                                              elementKind:elementKind
                                       previousAttributes:prevAttr];
     }
     
-    return _calculator.decorationAtIndexPath(elementKind, decorationIndexPath);
+    return prevAttr;
 }
 
 #pragma mark - reorder

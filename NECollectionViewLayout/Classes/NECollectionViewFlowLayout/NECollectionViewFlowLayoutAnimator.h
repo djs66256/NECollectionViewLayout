@@ -20,15 +20,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable UICollectionViewLayoutAttributes *)layout:(UICollectionViewLayout *)layout
   finalLayoutAttributesForDisappearingItemAtIndexPath:(NSIndexPath *)itemIndexPath
                                    previousAttributes:(nullable UICollectionViewLayoutAttributes *)prevAttributes;
-
-- (nullable UICollectionViewLayoutAttributes *)layout:(UICollectionViewLayout *)layout
-   initialLayoutAttributesForAppearingItemAtIndexPath:(NSIndexPath *)itemIndexPath
-__deprecated_msg("use - layout:initialLayoutAttributesForAppearingItemAtIndexPath:previousAttributes:");
-
-- (nullable UICollectionViewLayoutAttributes *)layout:(UICollectionViewLayout *)layout
-  finalLayoutAttributesForDisappearingItemAtIndexPath:(NSIndexPath *)itemIndexPath
-__deprecated_msg("use - layout:finalLayoutAttributesForDisappearingItemAtIndexPath:previousAttributes:");
-
 @end
 
 @protocol NECollectionViewFlowLayoutElementAnimator <NSObject>

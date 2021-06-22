@@ -67,7 +67,7 @@
     
     self.dataSourece = [NSMutableArray new];
     
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 10; i++) {
         NSMutableArray *section = [NSMutableArray new];
         for (int r = 0; r < 20; r++) {
             [section addObject:@{
@@ -145,7 +145,11 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return  CGSizeMake(collectionView.frame.size.width -40, [self.dataSourece[indexPath.section][indexPath.item][@"title"] isEqual:@"0-0"] ? 300: 88);
+    return  CGSizeMake(collectionView.frame.size.width / 6, 88);
+}
+
+- (BOOL)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)layout backgroundVisibleForSectionAtIndex:(NSInteger)section {
+    return YES;
 }
 
 - (NECollectionViewFlowLayoutAlignment)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)layout alignVerticalForSectionAtIndex:(NSInteger)section {
@@ -166,9 +170,10 @@
 
 - (void)deletSection {
     if (self.dataSourece.count) {
-        [self.dataSourece removeObjectAtIndex:0];
+        NSInteger i = 0; //self.dataSourece.count - 1;
+        [self.dataSourece removeObjectAtIndex:i];
         [self.collectionView performBatchUpdates:^{
-            [self.collectionView deleteSections:[NSIndexSet indexSetWithIndex:0]];
+            [self.collectionView deleteSections:[NSIndexSet indexSetWithIndex:i]];
         } completion:^(BOOL finished) {
             
         }];

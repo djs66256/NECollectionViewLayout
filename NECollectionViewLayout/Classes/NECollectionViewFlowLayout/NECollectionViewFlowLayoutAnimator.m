@@ -10,8 +10,9 @@
 @implementation NECollectionViewFlowLayoutScaleAnimator
 
 - (UICollectionViewLayoutAttributes *)layout:(UICollectionViewLayout *)layout
-initialLayoutAttributesForAppearingItemAtIndexPath:(NSIndexPath *)itemIndexPath {
-    UICollectionViewLayoutAttributes *attributes = [layout layoutAttributesForItemAtIndexPath:itemIndexPath].copy;
+initialLayoutAttributesForAppearingItemAtIndexPath:(NSIndexPath *)itemIndexPath
+previousAttributes:(nullable UICollectionViewLayoutAttributes *)prevAttributes {
+    UICollectionViewLayoutAttributes *attributes = prevAttributes.copy;
     attributes.zIndex --;
     attributes.alpha = 0.3;
     attributes.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.1, 0.1);

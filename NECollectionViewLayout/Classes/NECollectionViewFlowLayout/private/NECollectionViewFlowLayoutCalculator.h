@@ -136,6 +136,8 @@ public:
         updates_.reset();
     }
     
+    const auto& cachedPrevSections() { return cachedSections_; }
+    
     void cacheResult() {
         cachedSections_ = sections_;
     }
