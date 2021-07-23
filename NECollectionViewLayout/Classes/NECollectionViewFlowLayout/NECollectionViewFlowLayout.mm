@@ -254,6 +254,9 @@ private:
 @property (nonatomic, strong) NSMutableSet<NSIndexPath *> *insertedIndexPaths;
 @property (nonatomic, strong) NSMutableSet<NSIndexPath *> *deletedIndexPaths;
 
+@property (nonatomic, strong) NSMutableSet<NSIndexPath *> *insertedSectionIndexPaths;
+@property (nonatomic, strong) NSMutableSet<NSIndexPath *> *deletedSectionIndexPaths;
+
 @end
 
 @implementation NECollectionViewFlowLayout {
@@ -373,12 +376,45 @@ private:
 - (void)prepareForCollectionViewUpdates:(NSArray<UICollectionViewUpdateItem *> *)updateItems {
     _insertedIndexPaths = [NSMutableSet set];
     _deletedIndexPaths = [NSMutableSet set];
+    _insertedSectionIndexPaths = [NSMutableSet set];
+    _deletedSectionIndexPaths = [NSMutableSet set];
     for (UICollectionViewUpdateItem *item in updateItems) {
         if (item.updateAction == UICollectionUpdateActionInsert) {
-            [_insertedIndexPaths addObject:item.indexPathAfterUpdate];
+            auto idx = item.indexPathAfterUpdate;
+            [_insertedIndexPaths addObject:idx];
+            if (idx.item == NSNotFound) {
+                [_insertedSectionIndexPaths addObject:[NSIndexPath indexPathForItem:0 inSection:idx.section]];
+            }
         }
         else if (item.updateAction == UICollectionUpdateActionDelete) {
-            [_deletedIndexPaths addObject:item.indexPathBeforeUpdate];
+            auto idx = item.indexPathBeforeUpdate;
+            [_deletedIndexPaths addObject:idx];
+            if (idx.item == NSNotFound) {
+                [_deletedSectionIndexPaths addObject:[NSIndexPath indexPathForItem:0 inSection:idx.section]];
+            }
+        }
+        else if (item.updateAction == UICollectionUpdateActionReload) {
+            auto idx = item.indexPathBeforeUpdate;
+            if (idx.item == NSNotFound) {
+                auto sectionIdx = [NSIndexPath indexPathForItem:0 inSection:idx.section];
+                [_insertedSectionIndexPaths addObject:sectionIdx];
+                [_deletedSectionIndexPaths addObject:sectionIdx];
+            }
+        }
+        else if (item.updateAction == UICollectionUpdateActionMove) {
+            // Move equals delete then insert
+            {
+                auto idx = item.indexPathAfterUpdate;
+                if (idx.item == NSNotFound) {
+                    [_insertedSectionIndexPaths addObject:[NSIndexPath indexPathForItem:0 inSection:idx.section]];
+                }
+            }
+            {
+                auto idx = item.indexPathBeforeUpdate;
+                if (idx.item == NSNotFound) {
+                    [_deletedSectionIndexPaths addObject:[NSIndexPath indexPathForItem:0 inSection:idx.section]];
+                }
+            }
         }
     }
 }
@@ -386,6 +422,8 @@ private:
 - (void)finalizeCollectionViewUpdates {
     self.insertedIndexPaths = nil;
     self.deletedIndexPaths = nil;
+    self.insertedSectionIndexPaths = nil;
+    self.deletedSectionIndexPaths = nil;
 }
 
 - (BOOL)indexPathsBeforeUpdates:(NSMutableSet<NSIndexPath *> *)indexPathsBeforeUpdates containsItemIndexPath:(NSIndexPath *)itemIndexPath {
@@ -495,6 +533,23 @@ private:
 //    ctx.invalidateFlowLayoutDelegateMetrics = NO;
 //    return ctx;
 //}
+
+
+- (NSArray<NSIndexPath *> *)indexPathsToDeleteForSupplementaryViewOfKind:(NSString *)elementKind API_AVAILABLE(ios(7.0)) {
+    return _deletedSectionIndexPaths.allObjects;
+}
+
+- (NSArray<NSIndexPath *> *)indexPathsToDeleteForDecorationViewOfKind:(NSString *)elementKind API_AVAILABLE(ios(7.0)) {
+    return _deletedSectionIndexPaths.allObjects;
+}
+
+- (NSArray<NSIndexPath *> *)indexPathsToInsertForSupplementaryViewOfKind:(NSString *)elementKind API_AVAILABLE(ios(7.0)) {
+    return _insertedSectionIndexPaths.allObjects;
+}
+
+- (NSArray<NSIndexPath *> *)indexPathsToInsertForDecorationViewOfKind:(NSString *)elementKind API_AVAILABLE(ios(7.0)) {
+    return _insertedSectionIndexPaths.allObjects;
+}
 
 #pragma mark - section api
 - (CGPoint)contentOffsetForSectionAtIndex:(NSInteger)section {
